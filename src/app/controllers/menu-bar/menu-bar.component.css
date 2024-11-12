@@ -1,0 +1,84 @@
+/* Estilo del menú */
+.menu { 
+  width: 100%; 
+  height: 100%; 
+  background-color: #f8f9fa; 
+  margin-right: 5px; 
+  overflow-y: scroll; /* Permitir el desplazamiento vertical */
+  overflow-x: hidden; /* Ocultar la barra de desplazamiento horizontal */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  scrollbar-width: none; /* Para ocultar la barra en Firefox */
+  -ms-overflow-style: none; /* Para ocultar la barra en Internet Explorer y Edge */
+}
+
+/* Para ocultar la barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari) */
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+
+  
+  /* Logo centrado y ajustado */
+  .logo img {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo de los encabezados (h2) */
+  .menu h2 {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Estilo para las listas */
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .menu ul li {
+    margin: 5px 0;
+    padding-left: 15px;
+  }
+  
+  .menu ul h1 {
+    text-decoration: none;
+    color: #767676;
+    font-size:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .menu h1::after {
+    content: "▼";
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+/* Asegúrate de tener la clase .arrow en el HTML para que funcione */
+.menu h1 .arrow.open {
+    transform: rotate(180deg); /* Rotar la flecha */
+}
+
+
+  /* Submenú oculto por defecto */
+  .submenu {
+    display: none;
+    padding-left: 20px;
+  }
+  
+  /* Mostrar submenú cuando el li tiene la clase 'open' */
+  .menu ul li.open .submenu {
+    display: block;
+  }
+  

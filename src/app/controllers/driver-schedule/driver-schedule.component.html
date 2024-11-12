@@ -1,0 +1,49 @@
+<div class="controls">
+  <div class="grid-container">
+    <div class="grid-header">
+      <button class="nav-button left" (click)="previousDays()">◀</button>
+      <div class="grid-item empty-cell">
+        
+      </div>
+      @for (day of days; track $index) {
+        <div class="grid-item header-item">
+          <strong>{{ day.day }}</strong><br>
+          {{ day.date }}
+        </div>
+      }
+    </div>
+    <button class="nav-button right" (click)="nextDays()">▶</button>
+    @for (driver of drivers; track $index) {
+      <div  #driversScrollContainer  class="grid-item2 driver-name"  (scroll)="onScroll($event)">
+        <strong class="driver-info">
+          <span class="name">{{ driver.v_NameDriver }}</span>
+          <span class="phone">{{ driver.n_numCel }}</span>
+          <span class="plate">{{ driver.v_PlacaVehicles }}</span>
+          <span class="state">{{ driver.v_NameState }}</span>
+          <span class="location">{{ driver.locations }}</span>
+        </strong>
+      </div>
+      @for (day of days; track $index) {
+        <div class="grid-item">
+          <strong>
+            @if (driver.chargeDetails) {
+              @for (chargeDetail of driver.chargeDetails; track $index) {
+                @if (chargeDetail.fecha_charge_star === day.date) {
+                  @if (chargeDetail.v_Name_Statecharges === 'Estado Pendiente') {
+                    <div class="stateCharger">
+                      {{chargeDetail.v_Name_Statecharges}}
+                    </div>
+                  } @else {
+                    <div class="stateCharger2">
+                      {{chargeDetail.v_Name_Statecharges}}
+                    </div>
+                  }
+                }
+              }
+            }
+          </strong>
+        </div>
+      }
+    }
+  </div>
+</div>
